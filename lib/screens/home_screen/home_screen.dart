@@ -4,14 +4,20 @@ import 'package:flutter/material.dart';
 
 import 'widget/bottom_bar.dart';
 import 'widget/headWidget.dart';
-import 'widget/propular_products.dart';
+import 'widget/popular_products.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({
+    Key? key,
+    this.showMenu = true,
+    required this.onPressed,
+  }) : super(key: key);
+
+  final bool showMenu;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
-    final Size deviceData = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color(0xFF202F40),
       bottomNavigationBar: BottomBar(),
@@ -25,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                 color: Colors.white,
                 height: 850,
               ),
-              HeadWidget(),
+              HeadWidget(showMenu: showMenu, onPressed: onPressed),
               Positioned(
                 top: 350,
                 left: 0,

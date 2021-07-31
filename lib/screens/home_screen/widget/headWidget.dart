@@ -7,7 +7,12 @@ import 'collection_categoary.dart';
 class HeadWidget extends StatelessWidget {
   const HeadWidget({
     Key? key,
+    this.showMenu = true,
+    required this.onPressed,
   }) : super(key: key);
+
+  final bool showMenu;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +36,13 @@ class HeadWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SvgPicture.asset(
-                      "assets/images/menu.svg",
-                      color: Colors.white,
-                      // width: 80,
+                    GestureDetector(
+                      onTap: onPressed,
+                      child: SvgPicture.asset(
+                        "assets/images/menu.svg",
+                        color: Colors.white,
+                        // width: 80,
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 12),

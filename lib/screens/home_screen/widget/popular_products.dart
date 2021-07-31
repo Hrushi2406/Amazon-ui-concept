@@ -55,10 +55,23 @@ class PopularProduct extends StatelessWidget {
   }
 }
 
-class ProductTab extends StatelessWidget {
+class ProductTab extends StatefulWidget {
   const ProductTab({
     Key? key,
   }) : super(key: key);
+
+  @override
+  _ProductTabState createState() => _ProductTabState();
+}
+
+class _ProductTabState extends State<ProductTab> {
+  bool isFav = false;
+
+  heart() {
+    isFav = !isFav;
+
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,19 +105,24 @@ class ProductTab extends StatelessWidget {
             Positioned(
               right: 10,
               top: 10,
-              child: ClipRRect(
-                borderRadius: kBorderRadius,
-                child: BackdropFilter(
-                  filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    padding: EdgeInsets.all(10),
-                    child: Image.asset(
-                      'assets/images/heart-2.png',
-                      width: 20,
-                      height: 20,
-                      color: Colors.white,
+              child: GestureDetector(
+                onTap: heart,
+                child: ClipRRect(
+                  borderRadius: kBorderRadius,
+                  child: BackdropFilter(
+                    filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      padding: EdgeInsets.all(10),
+                      child: Image.asset(
+                        isFav
+                            ? 'assets/images/heart-2-fill.png'
+                            : 'assets/images/heart-2.png',
+                        width: 20,
+                        height: 20,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
@@ -147,12 +165,8 @@ class ProductPageView extends StatefulWidget {
 class _ProductPageViewState extends State<ProductPageView> {
   final _controller = new PageController();
 
-  static const _kDuration = const Duration(milliseconds: 300);
-
-  static const _kCurve = Curves.ease;
-
-  final _kArrowColor = Colors.black.withOpacity(0.8);
   List<Color> colors = [Colors.yellow, Colors.grey, Colors.orangeAccent];
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -219,24 +233,21 @@ class DotsIndicator extends AnimatedWidget {
   // The base size of the dots
   static const double _kDotSize = 10.0;
 
-  // The increase in the size of the selected dot
-  static const double _kMaxZoom = 2.0;
-
   // The distance between the center of each dot
   static const double _kDotSpacing = 25.0;
 
   Widget _buildDot(int index) {
     bool isSelected = controller.page == index;
-    return new Container(
+    return Container(
       width: _kDotSpacing,
-      child: new Center(
-        child: new Material(
+      child: Center(
+        child: Material(
           color: isSelected ? color : color.withOpacity(0.5),
           type: MaterialType.circle,
-          child: new Container(
+          child: Container(
             width: _kDotSize,
             height: _kDotSize,
-            child: new InkWell(
+            child: InkWell(
               onTap: () => onPageSelected(index),
             ),
           ),

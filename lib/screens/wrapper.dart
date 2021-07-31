@@ -22,14 +22,14 @@ class _WrapperState extends State<Wrapper> with SingleTickerProviderStateMixin {
   //Rotation animation for the home screen
   late final Animation<double> _rotateAnimation;
 
-  final Curve curve = Curves.easeInOut;
+  final Curve curve = Curves.fastOutSlowIn;
 
   @override
   void initState() {
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 850),
+      duration: const Duration(milliseconds: 650),
     );
 
     _scaleAnimation = Tween<double>(
@@ -101,9 +101,12 @@ class _WrapperState extends State<Wrapper> with SingleTickerProviderStateMixin {
               child: RotationTransition(
                 alignment: Alignment.topCenter,
                 turns: _rotateAnimation,
-                child: HomeScreen(
-                  showMenu: showMenu,
-                  onPressed: handleMenu,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: HomeScreen(
+                    showMenu: showMenu,
+                    onPressed: handleMenu,
+                  ),
                 ),
               ),
             ),
