@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:amazonui/screens/home_screen.dart';
 import 'package:amazonui/screens/nav_screen.dart';
 import 'package:flutter/material.dart';
