@@ -203,7 +203,7 @@ class _ProductPageViewState extends State<ProductPageView> {
         SizedBox(
           height: 200,
           child: PageView.builder(
-              physics: new AlwaysScrollableScrollPhysics(),
+              physics: AlwaysScrollableScrollPhysics(),
               controller: _controller,
               itemCount: colors.length,
               itemBuilder: (BuildContext context, int index) {
@@ -212,7 +212,11 @@ class _ProductPageViewState extends State<ProductPageView> {
                   height: 200,
                   decoration: BoxDecoration(
                     borderRadius: kBorderRadius,
-                    color: colors[index],
+                    image: DecorationImage(
+                      image:
+                          AssetImage('assets/images/slider_${index + 1}.png'),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 );
               }),
