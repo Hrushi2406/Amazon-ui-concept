@@ -21,7 +21,7 @@ class NavScreen extends StatelessWidget {
               CircleAvatar(
                 radius: 50,
                 backgroundImage: AssetImage(
-                  "assets/images/profile.jpg",
+                  "assets/images/profile.jpeg",
                 ),
               ),
               SizedBox(
@@ -35,7 +35,7 @@ class NavScreen extends StatelessWidget {
                 height: 12,
               ),
               Text(
-                "Alexa Smith",
+                "Alex Smith",
                 style: kText24,
               ),
               Container(

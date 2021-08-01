@@ -53,7 +53,7 @@ class HeadWidget extends StatelessWidget {
                       ),
                     ),
                     CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/profile.jpg'),
+                      backgroundImage: AssetImage('assets/images/profile.jpeg'),
                     )
                   ],
                 ),
@@ -109,7 +109,7 @@ class HeadWidget extends StatelessWidget {
                     ),
                     CollectionCategoary(
                       iconPath: "assets/images/television.svg",
-                      categoary: "Eletrrnics",
+                      categoary: "Electronics",
                     ),
                     CollectionCategoary(
                       iconPath: "assets/images/gamepad.svg",

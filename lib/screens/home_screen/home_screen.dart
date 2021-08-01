@@ -21,26 +21,29 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFF202F40),
       bottomNavigationBar: BottomBar(),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Stack(
-            alignment: Alignment.topCenter,
-            fit: StackFit.loose,
-            children: [
-              Container(
-                color: Colors.white,
-                height: 850,
-              ),
-              HeadWidget(showMenu: showMenu, onPressed: onPressed),
-              Positioned(
-                top: 350,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: PopularProduct(),
-              ),
-            ],
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: AppBar().preferredSize.height),
+            Stack(
+              alignment: Alignment.topCenter,
+              fit: StackFit.loose,
+              children: [
+                Container(
+                  color: Colors.white,
+                  height: 850,
+                ),
+                HeadWidget(showMenu: showMenu, onPressed: onPressed),
+                Positioned(
+                  top: 350,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: PopularProduct(),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

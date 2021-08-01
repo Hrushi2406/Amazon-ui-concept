@@ -40,11 +40,31 @@ class PopularProduct extends StatelessWidget {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                ProductTab(),
-                ProductTab(),
-                ProductTab(),
-                ProductTab(),
-                ProductTab(),
+                const ProductTab(
+                  title: 'Iphone',
+                  price: '69,990',
+                  image: 'assets/images/product_1.jpg',
+                ),
+                const ProductTab(
+                  title: 'Versace Eros',
+                  price: '2,490',
+                  image: 'assets/images/product_2.jpeg',
+                ),
+                const ProductTab(
+                  title: 'Curology Cleaner',
+                  price: '1,990',
+                  image: 'assets/images/product_3.jpeg',
+                ),
+                const ProductTab(
+                  title: 'Airpods Pro',
+                  price: '22,490',
+                  image: 'assets/images/product_4.jpeg',
+                ),
+                const ProductTab(
+                  title: 'Canon Lens',
+                  price: '8,490',
+                  image: 'assets/images/product_5.jpeg',
+                ),
               ],
             ),
           ),
@@ -58,7 +78,14 @@ class PopularProduct extends StatelessWidget {
 class ProductTab extends StatefulWidget {
   const ProductTab({
     Key? key,
+    required this.title,
+    required this.image,
+    required this.price,
   }) : super(key: key);
+
+  final String title;
+  final String image;
+  final String price;
 
   @override
   _ProductTabState createState() => _ProductTabState();
@@ -80,7 +107,7 @@ class _ProductTabState extends State<ProductTab> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         image: DecorationImage(
-          image: AssetImage("assets/images/iphone.jpg"),
+          image: AssetImage(widget.image),
           fit: BoxFit.cover,
         ),
         color: Theme.of(context).primaryColor,
@@ -135,11 +162,13 @@ class _ProductTabState extends State<ProductTab> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "₹ 6599.00",
+                    '₹ ${widget.price}',
+                    // "₹ 6599.00",
                     style: kText16.copyWith(color: Color(0xFFFF9800)),
                   ),
                   Text(
-                    "iPhone11 (128gb)",
+                    widget.title,
+                    // "iPhone11 (128gb)",
                     style: kText16.copyWith(
                         color: Colors.white, fontWeight: FontWeight.w600),
                   ),
